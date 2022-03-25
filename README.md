@@ -33,7 +33,7 @@ You will need to set all these five variables. Starting with `TELEGRAM_BOT_USERN
 
 You can get your `USER_ID` talking to @userinfobot on Telegram.
 
-`STICKER_NAME` is your Sticker Pack's name, used normally in "t.me/addstickers/<STICKER_NAME>", for example. `STICKER_NAME` needs to be a string.
+`STICKER_NAME` is your Sticker Pack's name, used normally at `t.me/addstickers/<STICKER_NAME>_by_<TELEGRAM_BOT_USERNAME>`, for example. `STICKER_NAME` needs to be a string.
 Note that if this name is already being used by another sticker pack, it will cause an error.
 
 `STICKER_TITLE` is your Sticker Pack's title, shown at the top of the stickers on Telegram. `STICKER_TITLE` needs to be a string.
