@@ -46,4 +46,5 @@ Note that if this name is already being used by another sticker pack, it will ca
 To run it, simply execute:
 
 `python -m import_telegram_stickers.main`
+
 And it's done! To use your new sticker pack, access "t.me/addstickers/<STICKER_NAME>_by_<TELEGRAM_BOT_USERNAME>".
