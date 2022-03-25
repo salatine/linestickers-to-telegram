@@ -6,11 +6,7 @@ A simple program which uploads stickers originally from LINE to Telegram.
 ## Setup
 First of all, clone your project or download it to a folder. Now you will need to create a `stickers.json` file on your project folder with all the sticker pack info. To do that, you can easily use <a href="https://github.com/line-stickers/LineStickersEditor/releases/tag/latest/">Line Sticker Editor</a>, there is a quick simple <a href="https://line-stickers.github.io/">tutorial</a> on how to use this tool.
 
-We use Poetry to manage dependencies. To install it, open a terminal on your project and execute:
-
-`(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -`
-
-Also, we need to create a venv for this project, and finally, install our dependencies.
+We use [Poetry](https://python-poetry.org/docs/#installation) to manage dependencies. After installing it, create a venv for this project and install the dependencies by running the following:
 ```
 poetry shell
 poetry install
@@ -37,14 +33,15 @@ You will need to set all these five variables. Starting with `TELEGRAM_BOT_USERN
 
 You can get your `USER_ID` talking to @userinfobot on Telegram.
 
-`STICKER_NAME` is your Sticker Pack's name, appeared normally in "t.me/addstickers/<STICKER_NAME>", for example. `STICKER_NAME` needs to be a string.
-Note that if this name is already being used by another sticker pack, it will cause an error.
+`STICKER_NAME` is your sticker pack's name, used normally at `t.me/addstickers/<STICKER_NAME>_by_<TELEGRAM_BOT_USERNAME>`.
+It needs to be a string. Note that if this name is already being used by another sticker pack, it will cause an error.
 
-`STICKER_TITLE` is your Sticker Pack's title, appeared at the top of the stickers on Telegram. `STICKER_TITLE` needs to be a string.
+`STICKER_TITLE` is your Sticker Pack's title, shown at the top of the stickers on Telegram. 
+It needs to be a string.
 
 ## Running
 To run it, simply execute:
 
 `python -m import_telegram_stickers.main`
 
-And it's done! To use your new sticker pack, access "t.me/addstickers/<STICKER_NAME>_by_<TELEGRAM_BOT_USERNAME>".
+And it's done! To use your new sticker pack, access `t.me/addstickers/<STICKER_NAME>_by_<TELEGRAM_BOT_USERNAME>`.
