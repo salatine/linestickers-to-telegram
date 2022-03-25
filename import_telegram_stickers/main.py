@@ -4,9 +4,7 @@ from typing import Tuple
 import requests
 import io
 from PIL import Image
-
-TELEGRAM_BOT_TOKEN = None
-USER_ID = None
+from import_telegram_stickers.variables import *
 
 @dataclass
 class Sticker:
@@ -140,7 +138,7 @@ def telegram_add_sticker_to_set(name: str, sticker: Sticker):
     return response.text
 
 def telegram_create_sticker_pack(name: str, title: str, stickerpack: StickerPack) -> None:
-    name = name + '_by_importstickersbot'
+    name = name + f'_by_{TELEGRAM_BOT_USERNAME}'
     first_sticker = stickerpack.stickers[0]
     telegram_create_new_sticker_set(name, title, first_sticker)
 
@@ -149,16 +147,7 @@ def telegram_create_sticker_pack(name: str, title: str, stickerpack: StickerPack
     
 def main():
     sticker_pack = load_sticker_pack('stickers.json')
+    telegram_create_sticker_pack(STICKER_NAME, STICKER_TITLE, sticker_pack)
 
-    telegram_create_sticker_pack('', '', sticker_pack)
-    
-    """ for sticker in sticker_pack.stickers:
-        # eba
-        image = download_sticker_image(sticker)
-        print(f'Sticker ID: {sticker.sticker_id}, image length: {len(image)}')
-
-        with open(f'images/{sticker.sticker_id}.png', 'wb') as file:
-            file.write(image) """
-    
 if __name__ == "__main__":
     main()
