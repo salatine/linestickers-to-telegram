@@ -31,7 +31,7 @@ STICKER_TITLE = None
 ```
 You will need to set all these five variables. Starting with `TELEGRAM_BOT_USERNAME`, `TELEGRAM_BOT_TOKEN`: you can get a bot's username and token by creating one with @botfather on Telegram. We need a Telegram Bot because the app's requests only work with a bot's token, even if it doesn't do anything. 
 
-Note that you will need to <b><i> send a message to your bot once before running the code</b></i>, just so it recognizes your User ID.
+Note that you will need to <b><i> send a message to your bot once before your first time ever running the code</b></i>, just so it recognizes your User ID.
 
 You can get your `USER_ID` talking to @userinfobot on Telegram.
 
