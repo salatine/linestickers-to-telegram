@@ -8,8 +8,8 @@ First of all, clone your project or download it to a folder. Now you will need t
 
 We use [Poetry](https://python-poetry.org/docs/#installation) to manage dependencies. After installing it, create a venv for this project and install the dependencies by running the following:
 ```
-poetry shell
-poetry install
+$ poetry shell
+$ poetry install
 ```
 
 When you first open the project, import_telegram_stickers/variables.py should look like this:
@@ -29,7 +29,7 @@ STICKER_NAME = None
 # a title for your sticker pack, like 'My Cool Sticker Pack'
 STICKER_TITLE = None 
 ```
-You will need to set all these five variables. Starting with `TELEGRAM_BOT_USERNAME`, `TELEGRAM_BOT_TOKEN`: you can get a bot's username and token by creating one with @botfather on Telegram. We need a Telegram Bot because the app's requests only work with a bot's token, even if it doesn't do anything.
+You will need to set all these five variables. Starting with `TELEGRAM_BOT_USERNAME`, `TELEGRAM_BOT_TOKEN`: you can get a bot's username and token by creating one with @botfather on Telegram. We need a Telegram Bot because the app's requests only work with a bot's token, even if it doesn't do anything. Note that you will need need to send a message to your bot once before running the code, just so it recognizes your User ID.
 
 You can get your `USER_ID` talking to @userinfobot on Telegram.
 
@@ -42,6 +42,6 @@ It needs to be a string.
 ## Running
 To run it, simply execute:
 
-`python -m import_telegram_stickers.main`
+`$ python -m import_telegram_stickers.main`
 
 And it's done! To use your new sticker pack, access `t.me/addstickers/<STICKER_NAME>_by_<TELEGRAM_BOT_USERNAME>`.
