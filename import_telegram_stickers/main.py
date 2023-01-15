@@ -71,7 +71,7 @@ def download_sticker_image(sticker_id: int) -> bytes:
         ratio = new_height / old_height
         new_width = int(old_width * ratio)
 
-    roi_img = img.resize((new_width, new_height), Image.ANTIALIAS)
+    roi_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
     
     img_byte_arr = io.BytesIO()
     roi_img.save(img_byte_arr, format='PNG')
@@ -90,7 +90,6 @@ def telegram_upload_sticker_file(sticker_id: int) -> TelegramFile:
 
     # o metodo .json converte o corpo da resposta em um dicionário
     json_data = response.json()
-    print(json_data)
 
     response.raise_for_status()
 
@@ -116,7 +115,6 @@ def telegram_create_new_sticker_set(name: str, title: str, sticker: Sticker) -> 
     }
 
     response = requests.post(url, data=data)
-    print(response.text)
     response.raise_for_status()
 
     return name, response.text
@@ -140,11 +138,24 @@ def telegram_add_sticker_to_set(name: str, sticker: Sticker):
 def telegram_create_sticker_pack(name: str, title: str, stickerpack: StickerPack) -> None:
     name = name + f'_by_{TELEGRAM_BOT_USERNAME}'
     first_sticker = stickerpack.stickers[0]
+    number_of_stickers = len(stickerpack.stickers)
+    i = 0
     telegram_create_new_sticker_set(name, title, first_sticker)
 
     for sticker in stickerpack.stickers[1:]:
+        show_progress(i, number_of_stickers)
         telegram_add_sticker_to_set(name, sticker)
-    
+        i += 1
+        
+    show_progress(i, number_of_stickers)
+    say_done()
+
+def show_progress(i, number_of_stickers):
+    print(f"{i}/{number_of_stickers}")
+
+def say_done():
+    print(f"done! now you can access Telegram sticker pack at https://t.me/addstickers/{STICKER_NAME}_by_{TELEGRAM_BOT_USERNAME}!")
+
 def main():
     sticker_pack = load_sticker_pack('stickers.json')
     telegram_create_sticker_pack(STICKER_NAME, STICKER_TITLE, sticker_pack)
